@@ -13,3 +13,6 @@ add_executable(pass_any_across_lib
 )
 
 target_link_libraries(pass_any_across_lib gen_any_lib)
+
+enable_testing()
+add_test(NAME pass_any_across_lib COMMAND pass_any_across_lib)
