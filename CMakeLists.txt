@@ -11,6 +11,13 @@ include(GenerateExportHeader)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
+find_package(Qt5Core REQUIRED)
+
+option(ENABLE_QT "Use QSharedPointer instead of std::shared_ptr (default off)" OFF)
+if (ENABLE_QT)
+    add_compile_definitions(USE_QT)
+endif()
+
 add_library(gen_any_lib SHARED
   genany.cpp
 )
@@ -22,6 +29,7 @@ generate_export_header(
     STATIC_DEFINE
     "GEN_ANY"
 )
+target_link_libraries(gen_any_lib Qt5::Core)
 
 add_executable(pass_any_across_lib
   main.cpp

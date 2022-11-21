@@ -1,0 +1,25 @@
+{
+    "version": 2,
+    "configurePresets": [
+        {
+            "name": "dev",
+            "displayName": "dev",
+            "description": "A basic preset for developers",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build-${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "dev-qt",
+            "displayName": "Dev with Qt",
+            "cacheVariables": {
+                "ENABLE_QT": true
+            },
+            "inherits": [
+                "dev"
+            ]
+        }
+    ]
+}
